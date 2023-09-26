@@ -29,7 +29,7 @@ book_dict = dict()
 for i in range(books.shape[0]):
     book_dict['title'] = books.loc[i]['Title']
     book_dict['author'] = books.loc[i]['Author']
-    book_dict['pages'] = books.loc[i]['Pages']
+    book_dict['pages'] = int(books.loc[i]['Pages'])
     book_dict['genre'] = books.loc[i]['Genre']
     chosen_books.append(book_dict)
     book_dict = dict()
