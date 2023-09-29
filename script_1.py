@@ -22,7 +22,6 @@ for user in users:
 books = pd.read_csv('books.csv')
 
 # Создание списка книг с параметрами каждой книги (список словарей)
-j = len(user_dict)
 chosen_books = list()
 book_dict = dict()
 
@@ -37,17 +36,17 @@ for i in range(books.shape[0]):
 # Собираем итоговый массив (распределение книг между пользователями)
 n = 0
 for i in range(len(chosen_books)):
-    if n < len(users_list):
+    if n < len(users_list) - 1:
         users_list[n]['books'].append(chosen_books[i])
         n += 1
     else:
+        users_list[n]['books'].append(chosen_books[i])
         n = 0
-        continue
 
 # Записываем итоговый результат в файл ,json
-with open('result.json', 'w') as f:
+with open('result_1.json', 'w') as f:
     json.dump(users_list, f, default=str)
 
 # Читаем записанный результат для проверки
-with open('result.json', 'r') as res:
+with open('result_1.json', 'r') as res:
     result = json.load(res)
